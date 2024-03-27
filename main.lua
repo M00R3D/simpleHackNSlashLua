@@ -8,38 +8,52 @@ function love.load()
         speed=3
     }
     k_w= false;k_a= false;k_s= false;k_d= false
+
+    enemy = 
+    {
+        x=60,
+        y=60,
+        width=30,
+        height=30,
+        speed=2
+    }
 end
 
 function love.update(dt)
-    if k_w==true then
-        player.y=player.y-(1*player.speed)
+    if k_w==true then    player.y=player.y-(1*player.speed)
     end
-    if k_a==true then
-        player.x=player.x-(1*player.speed)
+    if k_a==true then     player.x=player.x-(1*player.speed)
     end
-    if k_d==true then
-        player.x=player.x+(1*player.speed)
+    if k_d==true then    player.x=player.x+(1*player.speed)
     end
-    if k_s==true then
-        player.y=player.y+(1*player.speed)
+    if k_s==true then    player.y=player.y+(1*player.speed)
+    end
+    if player.x<0 then    player.x=0 end
+    if player.y<0 then    player.y=0 end
+    if player.x>(love.graphics.getWidth() - player.width) then    player.x=love.graphics.getWidth() - player.width
+    end
+    if player.y>(love.graphics.getHeight() - player.height) then    player.y=love.graphics.getHeight()- player.height
     end
 
-    if player.x<0 then
-        player.x=0
+    if enemy.x<player.x then
+        enemy.x=enemy.x+enemy.speed
     end
-    if player.y<0 then
-        player.y=0
+    if enemy.x>player.x then
+        enemy.x=enemy.x-enemy.speed
     end
-    if player.x>(love.graphics.getWidth() - player.width) then
-        player.x=love.graphics.getWidth() - player.width
+    if enemy.y<player.y then
+        enemy.y=enemy.y+enemy.speed
     end
-    if player.y>(love.graphics.getHeight() - player.height) then
-        player.y=love.graphics.getHeight()- player.height
+    if enemy.y>player.y then
+        enemy.y=enemy.y-enemy.speed
     end
 end
 
 function love.draw()
+    love.graphics.setColor(250, 0, 0, 255)
     love.graphics.rectangle("fill", player.x, player.y, player.width, player.height)
+    love.graphics.setColor(250, 100, 0, 255)
+    love.graphics.rectangle("fill", enemy.x, enemy.y, enemy.width, enemy.height)
 end
 
     function love.keypressed(key)
