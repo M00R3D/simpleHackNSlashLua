@@ -1,0 +1,11 @@
+Movimiento del jugador: Implementa el movimiento básico del jugador utilizando las teclas de dirección (W, A, S, D). Puedes utilizar el código que ya tienes en love.update() para manejar el movimiento del jugador.
+Colisiones: Agrega detección de colisiones para evitar que el jugador salga de los límites del área de juego o atraviese obstáculos. Esto puede ser necesario para evitar que el jugador se salga del mapa o colisione con los enemigos.
+Creación de enemigos: Crea un sistema para generar enemigos en la pantalla. Puedes comenzar con un enemigo básico y luego expandir la variedad a medida que avances en el desarrollo.
+sprite jugador
+Interacción jugador-enemigo: Implementa la lógica para que el jugador pueda atacar a los enemigos y los enemigos puedan atacar al jugador. Esto puede incluir daño causado, animaciones de ataque y efectos visuales.
+Sistema de salud y muerte: Crea un sistema para rastrear la salud del jugador y de los enemigos. Cuando la salud del jugador llegue a cero, el juego debería reiniciarse o mostrar algún tipo de pantalla de game over.
+Recompensas y monedas: Haz que los enemigos suelten monedas cuando sean derrotados. Luego, implementa un sistema para que el jugador pueda recoger estas monedas y utilizarlas para comprar mejoras más adelante en el juego.
+Niveles y progresión: Diseña un sistema de niveles para el jugador. A medida que el jugador derrota enemigos, gana experiencia y sube de nivel. Cada nivel alcanzado puede desbloquear nuevas habilidades o mejorar las habilidades existentes del jugador.
+Interfaz de usuario básica: Crea una interfaz de usuario simple que muestre la salud del jugador, las monedas recogidas y cualquier otra información relevante. Esto puede incluir también mensajes de tutorial o indicadores de objetivo.
+mundos y contenido
+sprites y pruebas y musica

@@ -28,7 +28,7 @@ end
 
 function love.draw()
     love.graphics.setColor(250, 0, 0, 255)
-    love.graphics.rectangle("fill", player.x, player.y, player.width, player.height)
+    love.graphics.draw(player.image,player.x,player.y)
     love.graphics.setColor(250, 100, 0, 255)
     Enemies.drawEnemies()
 end
