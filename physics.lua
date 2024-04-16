@@ -1,5 +1,16 @@
 --physics.lua
 local Physics={}
+
+function Physics.playerControl()
+    if k_w==true then    player.y=player.y-(1*player.speed)
+    end
+    if k_a==true then     player.x=player.x-(1*player.speed)
+    end
+    if k_d==true then    player.x=player.x+(1*player.speed)
+    end
+    if k_s==true then    player.y=player.y+(1*player.speed)
+    end
+end
     function Physics.colisionPlayer(player)
         if player.x<0 then    player.x=0 end
         if player.y<0 then    player.y=0 end

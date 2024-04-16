@@ -11,7 +11,8 @@ end
 
 
 function love.update(dt)
-    Input.playerControl()
+    Input.playerInputs()
+    Physics.playerControl()
     Physics.colisionPlayer(player)
     enemyTime=enemyTime-1
     Enemies.updateEnemies(dt)

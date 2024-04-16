@@ -1,14 +1,7 @@
 --input.lua
 local Input = {}
-function Input.playerControl()
-    if k_w==true then    player.y=player.y-(1*player.speed)
-    end
-    if k_a==true then     player.x=player.x-(1*player.speed)
-    end
-    if k_d==true then    player.x=player.x+(1*player.speed)
-    end
-    if k_s==true then    player.y=player.y+(1*player.speed)
-    end
+
+function Input.playerInputs()
     function love.keypressed(key)
         if key == "w" then
             k_w = true
@@ -32,6 +25,6 @@ function Input.playerControl()
             k_d = false
         end
     end
-
 end
+
 return Input
