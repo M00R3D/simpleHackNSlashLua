@@ -1,6 +1,5 @@
 --input.lua
 local Input = {}
-
 function Input.playerInputs()
     function love.keypressed(key)
         if key == "w" then
@@ -25,6 +24,6 @@ function Input.playerInputs()
             k_d = false
         end
     end
-end
 
+end
 return Input
