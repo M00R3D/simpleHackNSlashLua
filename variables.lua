@@ -6,7 +6,9 @@ function Variables.init()
     k_a = false
     k_s = false
     k_d = false
+    clk = false
     enemies = {}
+    balas={}
     playerSprTime = 0
     playerSprTimeMax = 300
     player = {

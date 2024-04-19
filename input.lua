@@ -24,6 +24,5 @@ function Input.playerInputs()
             k_d = false
         end
     end
-
 end
 return Input
