@@ -3,10 +3,12 @@ local Enemies = require("enemies")
 local Physics = require("physics")
 local Variables = require("variables")
 local Proyectiles = require("proyectiles")
+local Camera = require("camera")
 
 function love.load()
     Variables.init()
-   
+    cam = Camera()
+    cam:zoom(1.4)
 end
 
 
@@ -30,17 +32,30 @@ function love.update(dt)
         end
     end
     ----------------spawner de enemigos----------------------------
-
+    cam:lookAt(player.x,player.y)
     
+    local w = love.graphics.getWidth()
+    local h = love.graphics.getHeight()
+
+    if cam.x< w/2 then
+        cam.x = w/2
+    end
+    if cam.y< h/2 then
+        cam.y = h/2
+    end
 end
 
 function love.draw()
     Variables.drawPlayerLife()
-    love.graphics.draw(player.imageActual,player.x,player.y)
-    love.graphics.draw(player.imageGun,player.x+20+player.gunToogleX,player.y+10)
-    -- love.graphics.draw(player.image, love.mouse.getPosition())
-    Enemies.drawEnemies()
-    Proyectiles.drawProyectiles()
+
+    cam:attach()
+        love.graphics.draw(player.imageActual,player.x,player.y)
+        love.graphics.draw(player.imageGun,player.x+20+player.gunToogleX,player.y+10)
+        -- love.graphics.draw(player.image, love.mouse.getPosition())
+        Enemies.drawEnemies()
+        Proyectiles.drawProyectiles()
+    cam:detach()
+    
 end
 
 function love.mousepressed(x, y, button)
