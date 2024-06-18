@@ -10,6 +10,7 @@ function PlayerStart.createPlayer()
         height = 40,
         speed = 3,
         life = 30,
+        maxLife = 30,
         imageActual = love.graphics.newImage("sprites/sprite_player00.png"),
         image0 = love.graphics.newImage("sprites/sprite_player00.png"),
         image1 = love.graphics.newImage("sprites/sprite_player01.png"),

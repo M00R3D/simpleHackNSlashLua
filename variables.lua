@@ -59,7 +59,25 @@ function Variables.damagePlayer(damage)
 end
 
 function Variables.drawPlayerLife()
-    love.graphics.print("Vida: " .. player.life, 10, 10)
-end
+    local x = 20  -- Posición X de la barra de vida
+    local y = 20  -- Posición Y de la barra de vida
+    local width = 200  -- Ancho de la barra de vida
+    local height = 20  -- Altura de la barra de vida
 
+    -- Calcula la longitud de la barra de vida en función de player.life y player.maxLife
+    local lifeRatio = player.life / player.maxLife
+    local barWidth = width * lifeRatio
+
+    -- Dibuja el contorno de la barra de vida
+    love.graphics.setColor(255, 255, 255)  -- Color blanco para el contorno
+    love.graphics.rectangle('line', x, y, width, height)
+
+    -- Dibuja el relleno de la barra de vida en color verde si es mayor a 50%, rojo si es menor
+    if lifeRatio > 0.5 then
+        love.graphics.setColor(0, 255, 0)  -- Verde
+    else
+        love.graphics.setColor(255, 0, 0)  -- Rojo
+    end
+    love.graphics.rectangle('fill', x, y, barWidth, height)
+end
 return Variables
