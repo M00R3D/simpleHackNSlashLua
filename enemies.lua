@@ -1,8 +1,12 @@
 --enemies.lua
+local Variables = require("variables")
 local Physics = require("physics")
+-----------------creacion de arreglo de enemigos----------------------------
 local Enemies={}
+-----------------creacion de arreglo de enemigos----------------------------
 
 
+-----------------creacion de un enemigo----------------------------
     function Enemies.createEnemy(x, y)
         enemy = 
         {
@@ -15,13 +19,20 @@ local Enemies={}
         }    
         table.insert( enemies, enemy )
     end
+-----------------creacion de un enemigo----------------------------
 
+
+
+-----------------dibujar todo el arreglo de enemigos----------------------------
     function Enemies.drawEnemies()
         for i, enemy in ipairs(enemies) do
             love.graphics.draw(enemy.image, enemy.x, enemy.y)
         end
     end
+-----------------dibujar todo el arreglo de enemigos----------------------------
 
+
+----movimiento
     function Enemies.updateEnemies(dt)
         for i, enemy in ipairs(enemies) do
             -- Manejar la colisión con otros enemigos
@@ -51,6 +62,7 @@ local Enemies={}
                 local normalY = dy / distance
                 player.x = player.x + normalX * penetration * 0.5
                 player.y = player.y + normalY * penetration * 0.5
+                Variables.damagePlayer(3)
             end
             -- Mover a los enemigos según su dirección
             -- Esto debería estar fuera del bucle de colisión para evitar movimientos adicionales

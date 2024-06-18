@@ -1,5 +1,6 @@
 --variables.lua
 local Variables = {}
+local PlayerStart = require("playerStart")
 
 function Variables.init()
     k_w = false
@@ -9,32 +10,15 @@ function Variables.init()
     clk = false
     enemies = {}
     balas={}
-    playerSprTime = 0
-    playerSprTimeMax = 300
-    player = {
-        x = 120,
-        y = 70,
-        width = 40,
-        height = 40,
-        speed = 3,
-        imageActual = love.graphics.newImage("sprites/sprite_player00.png"),
-        image0 = love.graphics.newImage("sprites/sprite_player00.png"),
-        image1 = love.graphics.newImage("sprites/sprite_player01.png"),
-        image2 = love.graphics.newImage("sprites/sprite_player02.png"),
-        image3 = love.graphics.newImage("sprites/sprite_player03.png"),
-        images = {
-            love.graphics.newImage("sprites/sprite_player00.png"),
-            love.graphics.newImage("sprites/sprite_player01.png"),
-            love.graphics.newImage("sprites/sprite_player02.png"),
-            love.graphics.newImage("sprites/sprite_player03.png")
-        },
-        imageGun = love.graphics.newImage("sprites/sprite_gun_left.png"),  
-        gunToogleX = 0
-    }
+    PlayerStart.createPlayer()
     enemyCounter = 0
     enemyTime = 240
 end
 
+
+
+
+---------------logica animacion del personaje-------------
 function Variables.playerAnimator(dt)
     if k_a == true then
         player.imageGun = love.graphics.newImage("sprites/sprite_gun_right.png")
@@ -58,6 +42,24 @@ function Variables.playerAnimator(dt)
             player.imageActual = player.image0 
         end
     end
+end
+---------------logica animacion del personaje-------------
+
+
+-- Funcion para dañar al personaje
+function Variables.damagePlayer(damage)
+    player.life = player.life - damage
+    if player.life <= 0 then
+        player.life = 0
+        -- Aquí puedes agregar lógica adicional para manejar la muerte del personaje.
+        print("El personaje ha muerto")
+    else
+        print("El personaje ha recibido daño. Vida restante: " .. player.life)
+    end
+end
+
+function Variables.drawPlayerLife()
+    love.graphics.print("Vida: " .. player.life, 10, 10)
 end
 
 return Variables

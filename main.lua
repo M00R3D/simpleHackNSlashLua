@@ -12,13 +12,16 @@ end
 
 
 function love.update(dt)
-    Input.playerInputs()
-    Physics.playerControl()
-    Physics.colisionPlayer(player)
-    enemyTime=enemyTime-1
-    Enemies.updateEnemies(dt)
-    Variables.playerAnimator(dt)
-    Proyectiles.updateProyectiles(dt)
+    Input.playerInputs()---cargar controles
+    Physics.playerControl()----cargar movimiento jugador
+    Physics.colisionPlayerScreen(player)---detectar que el jugador no se salga de la pantalla
+    
+    enemyTime=enemyTime-1   ----se reduce el temporizador de spawnerde enemigos
+    
+    Enemies.updateEnemies(dt)------ movimiento de los enemigos y colisionar
+    Variables.playerAnimator(dt)---logica animacion del personaje
+    Proyectiles.updateProyectiles(dt)---- mover proyectiles y colisionar
+    ----------------spawner de enemigos----------------------------
     if enemyTime==0 then
         enemyTime=240
         if enemyCounter<11 then
@@ -26,11 +29,13 @@ function love.update(dt)
             enemyCounter=enemyCounter+1
         end
     end
+    ----------------spawner de enemigos----------------------------
 
     
 end
 
 function love.draw()
+    Variables.drawPlayerLife()
     love.graphics.draw(player.imageActual,player.x,player.y)
     love.graphics.draw(player.imageGun,player.x+20+player.gunToogleX,player.y+10)
     -- love.graphics.draw(player.image, love.mouse.getPosition())
