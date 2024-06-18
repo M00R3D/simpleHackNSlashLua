@@ -9,6 +9,9 @@ function love.load()
     Variables.init()
     cam = Camera()
     cam:zoom(1.4)
+
+    background = love.graphics.newImage("sprites/background.png")
+
 end
 
 
@@ -17,7 +20,8 @@ function love.update(dt)
     Input.playerInputs()---cargar controles
     Physics.playerControl()----cargar movimiento jugador
     Physics.colisionPlayerScreen(player)---detectar que el jugador no se salga de la pantalla
-    
+
+    Variables.drawPlayerLife()
     enemyTime=enemyTime-1   ----se reduce el temporizador de spawnerde enemigos
     
     Enemies.updateEnemies(dt)------ movimiento de los enemigos y colisionar
@@ -46,8 +50,13 @@ function love.update(dt)
 end
 
 function love.draw()
-    Variables.drawPlayerLife()
+    local screenWidth = love.graphics.getWidth()
+    local screenHeight = love.graphics.getHeight()
 
+    -- Dibujar la imagen del fondo escalada para cubrir toda la pantalla
+    love.graphics.draw(background, 0, 0, 0, screenWidth / background:getWidth(), screenHeight / background:getHeight())
+    Variables.drawPlayerLife()
+    Variables.drawPlayerMana()
     cam:attach()
         love.graphics.draw(player.imageActual,player.x,player.y)
         love.graphics.draw(player.imageGun,player.x+20+player.gunToogleX,player.y+10)

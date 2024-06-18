@@ -79,5 +79,32 @@ function Variables.drawPlayerLife()
         love.graphics.setColor(255, 0, 0)  -- Rojo
     end
     love.graphics.rectangle('fill', x, y, barWidth, height)
+    love.graphics.setColor(255, 255, 255)  -- Rojo
+
+end
+
+function Variables.drawPlayerMana()
+    local x = 20  -- Posición X de la barra de vida
+    local y = 50  -- Posición Y de la barra de vida
+    local width = 200  -- Ancho de la barra de vida
+    local height = 20  -- Altura de la barra de vida
+
+    -- Calcula la longitud de la barra de vida en función de player.life y player.maxLife
+    local manaRatio = player.mana / player.maxMana
+    local barWidth = width * manaRatio
+
+    -- Dibuja el contorno de la barra de vida
+    love.graphics.setColor(255, 255, 255)  -- Color blanco para el contorno
+    love.graphics.rectangle('line', x, y, width, height)
+
+    -- Dibuja el relleno de la barra de vida en color verde si es mayor a 50%, rojo si es menor
+    if manaRatio > 0.5 then
+        love.graphics.setColor(0, 0, 255)  -- Verde
+    else
+        love.graphics.setColor(0, 0, 0)  -- Rojo
+    end
+    love.graphics.rectangle('fill', x, y, barWidth, height)
+    love.graphics.setColor(255, 255, 255)  -- Rojo
+
 end
 return Variables
