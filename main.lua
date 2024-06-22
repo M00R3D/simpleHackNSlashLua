@@ -17,6 +17,10 @@ end
 
 
 function love.update(dt)
+    if player.isDead then
+        cam:zoom(3)
+        return 
+    end
     Input.playerInputs()---cargar controles
     Physics.playerControl()----cargar movimiento jugador
     Physics.colisionPlayerScreen(player)---detectar que el jugador no se salga de la pantalla
@@ -50,21 +54,25 @@ function love.update(dt)
 end
 
 function love.draw()
+
     local screenWidth = love.graphics.getWidth()
     local screenHeight = love.graphics.getHeight()
 
     -- Dibujar la imagen del fondo escalada para cubrir toda la pantalla
-    love.graphics.draw(background, 0, 0, 0, screenWidth / background:getWidth(), screenHeight / background:getHeight())
-    Variables.drawPlayerLife()
-    Variables.drawPlayerMana()
     cam:attach()
+        love.graphics.draw(background, 0, 0, 0, screenWidth / background:getWidth(), screenHeight / background:getHeight())
         love.graphics.draw(player.imageActual,player.x,player.y)
         love.graphics.draw(player.imageGun,player.x+20+player.gunToogleX,player.y+10)
         -- love.graphics.draw(player.image, love.mouse.getPosition())
         Enemies.drawEnemies()
         Proyectiles.drawProyectiles()
     cam:detach()
-    
+    if player.isDead ==false then
+        Variables.drawPlayerLife()
+        Variables.drawPlayerMana()
+    else
+        love.graphics.printf("ESTAS MUERTO", 0, screenHeight / 2 - 10, screenWidth, "center")
+    end
 end
 
 function love.mousepressed(x, y, button)

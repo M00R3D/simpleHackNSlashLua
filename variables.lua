@@ -48,16 +48,20 @@ end
 
 -- Funcion para dañar al personaje
 function Variables.damagePlayer(damage)
+    if player.isDead then
+        return
+    end
+
     player.life = player.life - damage
     if player.life <= 0 then
         player.life = 0
-        -- Aquí puedes agregar lógica adicional para manejar la muerte del personaje.
+        player.isDead = true
         print("El personaje ha muerto")
+        -- Aquí puedes agregar lógica adicional para manejar la muerte del personaje.
     else
         print("El personaje ha recibido daño. Vida restante: " .. player.life)
     end
 end
-
 function Variables.drawPlayerLife()
     local x = 20  -- Posición X de la barra de vida
     local y = 20  -- Posición Y de la barra de vida

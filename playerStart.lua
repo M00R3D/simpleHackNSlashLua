@@ -1,3 +1,5 @@
+--playerStart.lua
+
 local PlayerStart = {}
 
 function PlayerStart.createPlayer()
@@ -9,8 +11,8 @@ function PlayerStart.createPlayer()
         width = 40,
         height = 40,
         speed = 3,
-        life = 30,
-        maxLife = 30,
+        life = 1000,
+        maxLife = 1000,
         mana = 30,
         maxMana = 30,
         imageActual = love.graphics.newImage("sprites/sprite_player00.png"),
@@ -25,7 +27,8 @@ function PlayerStart.createPlayer()
             love.graphics.newImage("sprites/sprite_player03.png")
         },
         imageGun = love.graphics.newImage("sprites/sprite_gun_left.png"),  
-        gunToogleX = 0
+        gunToogleX = 0,
+        isDead = false
     }
 end
 return PlayerStart

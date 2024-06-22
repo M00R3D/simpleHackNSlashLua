@@ -15,7 +15,8 @@ local Enemies={}
             y=y,
             width=30,
             height=30,
-            speed=2
+            speed=2,
+            life=3
         }    
         table.insert( enemies, enemy )
     end
