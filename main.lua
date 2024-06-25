@@ -70,6 +70,7 @@ function love.draw()
     if player.isDead ==false then
         Variables.drawPlayerLife()
         Variables.drawPlayerMana()
+        Variables.drawPlayerExp()
     else
         love.graphics.printf("ESTAS MUERTO", 0, screenHeight / 2 - 10, screenWidth, "center")
     end
@@ -77,18 +78,21 @@ end
 
 function love.mousepressed(x, y, button)
     if button == 1 then
+        -- Convertir las coordenadas del mouse a las coordenadas del mundo
+        local worldX, worldY = cam:worldCoords(x, y)
+        
         -- Calcular el ángulo entre el jugador y el mouse
-        local angle = math.atan2(y - player.y, x - player.x)
+        local angle = math.atan2(worldY - player.y, worldX - player.x)
         
         -- Calcular direcciones X y Y a partir del ángulo
         local directionX = math.cos(angle)
         local directionY = math.sin(angle)
- 
         
         -- Crear un proyectil en la posición del jugador
         Proyectiles.createProyectil(player.x + 20, player.y + 10, directionX, directionY)
     end
 end
+
 
 --     function love.mousereleased(x, y, button)
 

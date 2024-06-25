@@ -86,6 +86,27 @@ function Variables.drawPlayerLife()
     love.graphics.setColor(255, 255, 255)  -- Rojo
 
 end
+function Variables.drawPlayerExp()
+    local x = 20  -- Posición X de la barra de experiencia
+    local y = 80  -- Posición Y de la barra de experiencia
+    local width = 200  -- Ancho de la barra de experiencia
+    local height = 20  -- Altura de la barra de experiencia
+
+    -- Calcula la longitud de la barra de experiencia en función de player.exp y player.maxExp
+    local expRatio = player.exp / player.maxExp
+    local barWidth = width * expRatio
+
+    -- Dibuja el contorno de la barra de experiencia
+    love.graphics.setColor(255, 255, 255)  -- Color blanco para el contorno
+    love.graphics.rectangle('line', x, y, width, height)
+
+    -- Dibuja el relleno de la barra de experiencia en color verde
+    love.graphics.setColor(0, 255, 0)  -- Verde
+    love.graphics.rectangle('fill', x, y, barWidth, height)
+
+    -- Restablece el color para que no afecte a otros dibujos
+    love.graphics.setColor(255, 255, 255)
+end
 
 function Variables.drawPlayerMana()
     local x = 20  -- Posición X de la barra de vida
