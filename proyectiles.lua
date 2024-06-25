@@ -1,6 +1,7 @@
 -- proyectiles.lua
 local Proyectiles = {}
 local Physics = require("physics")
+local Enemies = require("enemies")
 
 function Proyectiles.createProyectil(x, y, directionX, directionY)
     local proyectil = {
@@ -12,7 +13,8 @@ function Proyectiles.createProyectil(x, y, directionX, directionY)
         directionX = directionX,  -- dirección X del proyectil
         directionY = directionY,  -- dirección Y del proyectil
         image = love.graphics.newImage("sprites/sprite_proyectil.png"),  -- ajusta la ruta de la imagen
-        destroyed = false
+        destroyed = false,
+        dmg=5
     }
     table.insert(balas, proyectil)
 end
@@ -32,6 +34,7 @@ function Proyectiles.updateProyectiles(dt)
             -- Verificar colisión con enemigos
             for j, enemy in ipairs(enemies) do
                 if Physics.checkCollision(proyectil, enemy) then
+                    enemy.life=enemy.life-proyectil.dmg
                     proyectil.destroyed = true
                     -- Aquí podrías añadir lógica adicional al colisionar con un enemigo
                     -- Por ejemplo, reducir la vida del enemigo, etc.

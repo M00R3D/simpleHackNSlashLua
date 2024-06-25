@@ -83,7 +83,8 @@ function love.mousepressed(x, y, button)
         -- Calcular direcciones X y Y a partir del ángulo
         local directionX = math.cos(angle)
         local directionY = math.sin(angle)
-
+ 
+        
         -- Crear un proyectil en la posición del jugador
         Proyectiles.createProyectil(player.x + 20, player.y + 10, directionX, directionY)
     end
