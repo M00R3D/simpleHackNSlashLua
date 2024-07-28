@@ -23,11 +23,16 @@ function Variables.playerAnimator(dt)
     if k_a == true then
         player.imageGun = love.graphics.newImage("sprites/sprite_gun_right.png")
         player.gunToogleX = -30
+        side="left"
     elseif k_d == true then
         player.imageGun = love.graphics.newImage("sprites/sprite_gun_left.png")
         player.gunToogleX = 0
+        side="right"
     end
-
+    if side=="right"
+    then
+        
+    end
     playerSprTime = playerSprTime + dt
     
     if playerSprTime > 0.2 then

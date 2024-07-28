@@ -8,7 +8,7 @@ local Camera = require("camera")
 function love.load()
     Variables.init()
     cam = Camera()
-    cam:zoom(1.4)
+    cam:zoom(2.4)
 
     background = love.graphics.newImage("sprites/background.png")
 end
@@ -44,11 +44,11 @@ function love.update(dt)
     local w = love.graphics.getWidth()
     local h = love.graphics.getHeight()
 
-    if cam.x < w / 2 then
-        cam.x = w / 2
+    if cam.x < w / 3 then
+        cam.x = w / 3
     end
-    if cam.y < h / 2 then
-        cam.y = h / 2
+    if cam.y < h / 3 then
+        cam.y = h / 3
     end
 end
 
