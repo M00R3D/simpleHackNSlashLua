@@ -1,6 +1,7 @@
 --variables.lua
 local Variables = {}
 local PlayerStart = require("playerStart")
+local Camera = require("camera")
 
 function Variables.init()
     k_w = false
@@ -9,13 +10,13 @@ function Variables.init()
     k_d = false
     clk = false
     enemies = {}
-    balas={}
+    balas = {}
     PlayerStart.createPlayer()
     enemyCounter = 0
     enemyTime = 240
+    cam = Camera()
+    cam:lookAt(player.x, player.y) -- Centrar la cámara en el jugador
 end
-
-
 
 
 ---------------logica animacion del personaje-------------

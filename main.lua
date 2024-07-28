@@ -16,8 +16,9 @@ end
 function love.update(dt)
     if player.isDead then
         cam:zoom(3)
-        return 
+        return
     end
+
     Input.playerInputs()
     Physics.playerControl()
     Physics.colisionPlayerScreen(player)
@@ -51,6 +52,7 @@ function love.update(dt)
         cam.y = h / 3
     end
 end
+
 
 function love.draw()
     local screenWidth = love.graphics.getWidth()
